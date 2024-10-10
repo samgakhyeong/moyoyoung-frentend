@@ -50,7 +50,7 @@ export default function BoardMain() {
               currentPosts.map((post, index) => (
                 <div
                   key={post.id}
-                  className="border-b py-4 px-4 m-4 ml-[51rem] bg-gray-400 w-[60rem]"
+                  className="border-b py-4 px-4 m-4 ml-[51rem] bg-emerald-400 w-[60rem]"
                 >
                   <div className="text-xl text-white mb-2 font-bold">
                     작성일: {new Date(post.createdAt).toLocaleString()}
@@ -66,7 +66,7 @@ export default function BoardMain() {
                   >
                     {index + 1}번째: {post.title} {/* 번호와 제목 */}
                   </Link>
-                  <div className="text-lg">{post.content}</div>
+                  <div className="text-lg">내용: {post.content}</div>
                 </div>
               ))
             )}
