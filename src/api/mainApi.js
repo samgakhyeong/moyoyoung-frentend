@@ -6,14 +6,22 @@ const prefix = `${API_SERVER_HOST}/api/main`;
 
 // 소모임 리스트 데이터 가져오기
 export const getGroupList = async () => {
-  const res = await axiosInstance.get(`${prefix}/`);
-  return res.data;
+  try {
+    const res = await axiosInstance.get(`${prefix}/`);
+    return res.data;
+  } catch (error) {
+    return null;
+  }
 };
 
 export const getImage = async (id) => {
-  // { responseType: "blob" } => 바이너리 데이터를 blob으로 처리
-  const res = await axiosInstance.get(`${prefix}/getImage/${id}`, {
-    responseType: "blob",
-  });
-  return res.data;
+  try {
+    // { responseType: "blob" } => 바이너리 데이터를 blob으로 처리
+    const res = await axiosInstance.get(`${prefix}/getImage/${id}`, {
+      responseType: "blob",
+    });
+    return res.data;
+  } catch (error) {
+    return null;
+  }
 };
