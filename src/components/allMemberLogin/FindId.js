@@ -118,7 +118,7 @@ export default function FindId() {
             {error && "아이디를 찾을 수 없습니다."}
           </p>
 
-          <button className="py-2 mt-[-40px] mb-5 rounded-md bg-green-200 hover:bg-emerald-300 transition duration-500 px-3 text-sm font-semibold leading-6 text-gray-700">
+          <button className="py-2 mt-[-40px] mb-5 rounded-md bg-green-300 hover:bg-emerald-400 hover:text-white transition duration-500 px-3 text-sm font-semibold leading-6 text-black">
             아이디 찾기
           </button>
         </div>

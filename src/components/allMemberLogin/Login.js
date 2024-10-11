@@ -110,7 +110,7 @@ function Login() {
               <button
                 type="submit" 
                 disabled={loading}
-                className="flex w-full py-2 justify-center rounded-md bg-green-200 hover:bg-emerald-300 transition duration-500 px-3 text-sm font-semibold leading-6 text-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="flex w-full py-2 justify-center rounded-md bg-green-300 hover:bg-emerald-400 hover:text-white transition duration-500 px-3 text-sm font-semibold leading-6 text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
               >
                 로그인
               </button>
