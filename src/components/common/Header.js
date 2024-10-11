@@ -78,7 +78,7 @@ const Header = () => {
                 로그아웃
               </p>
             ) : (
-              <Link to="/allMemberLogin">로그인</Link>
+              <Link to="/allMemberLogin/Login">로그인</Link>
             )}
           </div>
         </div>
