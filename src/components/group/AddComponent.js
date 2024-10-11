@@ -53,8 +53,6 @@ const AddComponent = () => {
     formData.append("content", group.content);
 
     setFetching(true); // loading 띄움
-    console.log(formData);
-
     groupRegister(formData)
       .then((data) => {
         setFetching(false); // loading 닫음
