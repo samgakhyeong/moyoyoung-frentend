@@ -1,9 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+
 const PostContext = createContext();
+
 
 export const PostProvider = ({ children }) => {
     const [posts, setPosts] = useState({}); // 페이지별 게시글을 저장하기 위한 객체
+
 
     useEffect(() => {
         const savedPosts = localStorage.getItem('posts');
@@ -19,10 +22,12 @@ export const PostProvider = ({ children }) => {
         }
     }, []);
 
+
     // posts 상태를 로컬 스토리지에 저장하는 함수
     const savePostsToLocalStorage = (newPosts) => {
         localStorage.setItem('posts', JSON.stringify(newPosts));
     };
+
 
     // 게시글 추가
     const addPost = (title, content, file, page, createdAt, navigate) => {
@@ -32,6 +37,7 @@ export const PostProvider = ({ children }) => {
                 newPosts[page] = [];
             }
 
+
             // 게시글이 1개 이상인 경우
             if (newPosts[page].length >= 5) {
                 alert("게시글 한 페이지당 5개까지만 추가할 수 있습니다.");
@@ -39,9 +45,11 @@ export const PostProvider = ({ children }) => {
                 return prevPosts;
             }
 
+
             const postNumber = newPosts[page].length > 0
                 ? Math.max(...newPosts[page].map(post => post.id), 0) + 1
                 : 1;
+
 
             newPosts[page].push({
                 id: postNumber,
@@ -56,15 +64,18 @@ export const PostProvider = ({ children }) => {
             alert("게시글이 성공적으로 작성되었습니다.");
             navigate(`/allBoard/BoardMain?page=${page}`);
 
+
             return newPosts;
         });
     };
+
 
     // 게시글 수정
     const updateEditedPost = (page, id, title, content) => {
         setPosts((prevPosts) => {
             const newPosts = { ...prevPosts };
             const postIndex = newPosts[page]?.findIndex(post => post.id === id);
+
 
             if (postIndex !== -1) {
                 newPosts[page][postIndex] = {
@@ -80,12 +91,14 @@ export const PostProvider = ({ children }) => {
         });
     };
 
+
     return (
         <PostContext.Provider value={{ posts, addPost, updateEditedPost }}>
             {children}
         </PostContext.Provider>
     );
 };
+
 
 export const usePostContext = () => {
     const context = useContext(PostContext);
@@ -94,3 +107,5 @@ export const usePostContext = () => {
     }
     return context;
 };
+
+
