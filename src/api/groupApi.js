@@ -24,12 +24,12 @@ export const getGroupDetails = async (groupId) => {
   }
 };
 
-// 로그인한 유저의 그룹가입상태 가져오기
-export const getGroupUserState = async (groupId) => {
-  try {
-    const res = await axiosInstance.get(`${prefix}/state/${groupId}`);
-    return res.data;
-  } catch {
-    return null;
-  }
-};
+// // 로그인한 유저의 그룹가입상태 가져오기
+// export const getGroupUserState = async (groupId) => {
+//   try {
+//     const res = await axiosInstance.get(`${prefix}/state/${groupId}`);
+//     return res.data;
+//   } catch {
+//     return null;
+//   }
+// };
