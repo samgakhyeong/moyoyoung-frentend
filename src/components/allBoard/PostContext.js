@@ -4,7 +4,7 @@ const PostContext = createContext();
 
 export const PostProvider = ({ children }) => {
     const [posts, setPosts] = useState({}); // 페이지별 게시글을 저장하기 위한 객체
-
+    const [commentss, setCommentss] = useState({}); // 댓글 상태 추가
     useEffect(() => {
         const savedPosts = localStorage.getItem('posts');
         if (savedPosts) {
@@ -25,7 +25,7 @@ export const PostProvider = ({ children }) => {
     };
 
     // 게시글 추가
-    const addPost = (title, content, file, page, createdAt, navigate) => {
+    const addPost = (title, content,file ,fileUrl, page, createdAt, navigate) => {
         setPosts((prevPosts) => {
             const newPosts = { ...prevPosts };
             if (!newPosts[page]) {
@@ -48,6 +48,7 @@ export const PostProvider = ({ children }) => {
                 title,
                 content,
                 file,
+                fileUrl:file ? URL.createObjectURL(file) : null, // 파일 URL 저장,
                 createdAt,
                 updatedAt: createdAt, // 처음 작성된 시간
             });
@@ -61,7 +62,7 @@ export const PostProvider = ({ children }) => {
     };
 
     // 게시글 수정
-    const updateEditedPost = (page, id, title, content) => {
+    const updateEditedPost = (page, id, title, content,commentss,file,createdAt) => {
         setPosts((prevPosts) => {
             const newPosts = { ...prevPosts };
             const postIndex = newPosts[page]?.findIndex(post => post.id === id);
@@ -72,6 +73,8 @@ export const PostProvider = ({ children }) => {
                     title,
                     content,
                     updatedAt: new Date().toISOString(),
+                    createdAt,
+                    file: file || newPosts[page][postIndex].file // 파일 정보 유지
                 };
             }
 
@@ -80,8 +83,19 @@ export const PostProvider = ({ children }) => {
         });
     };
 
+
+    const addComment = (page, postId, comment) => {
+        setCommentss((prevCommentss) => ({
+            ...prevCommentss,
+            [page]: {
+                ...prevCommentss[page],
+                [postId]: [...(prevCommentss[page]?.[postId] || []), comment],
+            },
+        }));
+    };
+
     return (
-        <PostContext.Provider value={{ posts, addPost, updateEditedPost }}>
+        <PostContext.Provider value={{ posts, addPost, updateEditedPost,addComment,commentss  }}>
             {children}
         </PostContext.Provider>
     );

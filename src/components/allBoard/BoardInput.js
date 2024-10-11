@@ -11,15 +11,18 @@ export default function BoardInput() {
     const [content, setContent] = useState("");
     const fileInputRef = useRef(null);
     const [fileName, setFileName] = useState('');
+    const [file, setFile] = useState(null); // 파일 상태 추가
 
     // 현재 페이지를 쿼리 파라미터에서 가져오는 방법
     const queryParams = new URLSearchParams(window.location.search);
     const currentPage = queryParams.get('page') || '1';
+     
     
 
     const handleFileChange = (event) => {
         const files = event.target.files;
         if (files.length > 0) {
+            setFile(files[0]); // 파일 상태 업데이트
             setFileName(files[0].name);
             fileInputRef.current.files = event.target.files; // 파일 정보 저장
         }
@@ -40,8 +43,11 @@ export default function BoardInput() {
     
         const createdAt = new Date().toISOString();
 
+         // 파일 URL 생성
+        const fileUrl = URL.createObjectURL(file); // 로컬 URL 생성
+
         // 게시글 추가 시 현재 페이지를 인자로 넘김
-        addPost(title, content, file, currentPage,createdAt, navigate);  
+        addPost(title, content,file, fileUrl, currentPage,createdAt, navigate);  
     
     };
 

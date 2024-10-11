@@ -56,8 +56,8 @@ export default function BoardMain() {
                     작성일: {new Date(post.createdAt).toLocaleString()}
                   </div>
 
-                  {post.file && (
-                    <div className="text-lg mb-2">{post.file.name}</div>
+                  {post.fileUrl && (
+                   <img src={post.fileUrl} alt="첨부된 파일" className="mt-2 w-32 h-32 object-cover" />
                   )}
 
                   <Link
