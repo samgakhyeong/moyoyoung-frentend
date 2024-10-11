@@ -3,7 +3,8 @@ import Header from "../common/Header";
 import Footer from "../common/Footer";
 import axiosInstance from '../../axiosInstance';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import turnLeft from "../imgs/turn-left.png"
 
 export default function FindPassWord() {
   const navigate = useNavigate();
@@ -91,7 +92,15 @@ export default function FindPassWord() {
       <Header />
       <div className="flex items-center justify-center min-h-screen">
         <div className="flex flex-col items-center justify-center w-full shadow-md max-w-lg mt-20 ml-10 mb-20">
-          <h1 className="mb-8 font-bold text-4xl">비밀번호 찾기</h1>
+        <div className="flex justify-between items-center w-full">
+        <Link to="/allMemberLogin/Login">
+          <img src={turnLeft} alt="로고" className="mb-8 w-20 h-20 p-4" /> {/* 이미지 추가 */}
+        </Link>
+          <div className="flex-grow flex justify-center mr-20">
+            <h1 className="mb-8 font-bold text-4xl">비밀번호 찾기</h1>
+          </div>
+          </div>
+
           <p className="mb-6 font-bold">아이디
             <div className="mt-2">
               <input
@@ -137,7 +146,7 @@ export default function FindPassWord() {
                 />
               </div>
             </p>
-            <button onClick={handleVerifyIdentity} disabled={nameChecked} className={`${nameChecked?"bg-gray-200":"bg-green-200 hover:bg-green-300"} flex py-2 mt-8 ml-2 justify-center rounded-md px-3 text-sm font-semibold leading-6 text-gray-700`}>본인 인증하기</button>
+            <button onClick={handleVerifyIdentity} disabled={nameChecked} className={`${nameChecked?"bg-gray-200":"bg-green-200 hover:bg-emerald-300 transition duration-500"} flex py-2 mt-8 ml-2 justify-center rounded-md px-3 text-sm font-semibold leading-6 text-gray-700`}>본인 인증하기</button>
           </div>
 
           <p className="mb-6 font-bold">비밀번호 재설정 입력
@@ -173,7 +182,7 @@ export default function FindPassWord() {
           <button
             onClick={handleResetPassword}
             disabled={!nameChecked}
-            className={`${nameChecked?"bg-green-200 hover:bg-green-300":"bg-gray-200"} py-2 mb-5 rounded-md px-3 text-sm font-semibold leading-6 text-gray-700`}
+            className={`${nameChecked?"bg-green-200 hover:bg-emerald-300 transition duration-500":"bg-gray-200"} py-2 mb-5 rounded-md px-3 text-sm font-semibold leading-6 text-gray-700`}
           >
             비밀번호 재설정
           </button>

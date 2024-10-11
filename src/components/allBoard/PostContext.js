@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 const PostContext = createContext();
 
@@ -54,7 +55,9 @@ export const PostProvider = ({ children }) => {
             });
 
             savePostsToLocalStorage(newPosts); // 로컬 스토리지에 저장
-            alert("게시글이 성공적으로 작성되었습니다.");
+            toast.success("게시글이 성공적으로 작성되었습니다.",{
+                autoClose: 2000,
+              });
             navigate(`/allBoard/BoardMain?page=${page}`);
 
             return newPosts;
