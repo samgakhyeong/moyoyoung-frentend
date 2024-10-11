@@ -146,7 +146,7 @@ export default function FindPassWord() {
                 />
               </div>
             </p>
-            <button onClick={handleVerifyIdentity} disabled={nameChecked} className={`${nameChecked?"bg-gray-200":"bg-green-200 hover:bg-emerald-300 transition duration-500"} flex py-2 mt-8 ml-2 justify-center rounded-md px-3 text-sm font-semibold leading-6 text-gray-700`}>본인 인증하기</button>
+            <button onClick={handleVerifyIdentity} disabled={nameChecked} className={`${nameChecked?"bg-gray-200":"bg-green-300 hover:bg-emerald-400 hover:text-white transition duration-500"} flex py-2 mt-8 ml-2 justify-center rounded-md px-3 text-sm font-semibold leading-6 text-black`}>본인 인증하기</button>
           </div>
 
           <p className="mb-6 font-bold">비밀번호 재설정 입력
@@ -182,7 +182,7 @@ export default function FindPassWord() {
           <button
             onClick={handleResetPassword}
             disabled={!nameChecked}
-            className={`${nameChecked?"bg-green-200 hover:bg-emerald-300 transition duration-500":"bg-gray-200"} py-2 mb-5 rounded-md px-3 text-sm font-semibold leading-6 text-gray-700`}
+            className={`${nameChecked?"bg-green-300 hover:bg-emerald-400 hover:text-white transition duration-500":"bg-gray-200"} py-2 mb-5 rounded-md px-3 text-sm font-semibold leading-6 text-black`}
           >
             비밀번호 재설정
           </button>

@@ -320,9 +320,9 @@ export default function LoginJoin() {
                 </div>
               </p>
 
-              <button onClick={(e) => handleNameChecked(e)} disabled={nameChecked} className={`${nameChecked ? 'cursor-not-allowed bg-gray-300' : ' bg-green-200 hover:bg-emerald-300 transition duration-500'} flex py-2 mt-8 ml-2 justify-center rounded-md px-3 text-sm font-semibold leading-6 text-gray-700`}>본인 인증하기</button>
+              <button onClick={(e) => handleNameChecked(e)} disabled={nameChecked} className={`${nameChecked ? 'cursor-not-allowed bg-gray-300' : ' bg-green-300 hover:bg-emerald-400 hover:text-white transition duration-500'} flex py-2 mt-8 ml-2 justify-center rounded-md px-3 text-sm font-semibold leading-6 text-black`}>본인 인증하기</button>
             </div>
-            <button className="py-2 mb-5 rounded-md bg-green-200 hover:bg-emerald-300 transition duration-500 px-3 text-sm font-semibold leading-6 text-gray-700">회원가입 하기</button>
+            <button className="py-2 mb-5 rounded-md bg-green-300 hover:bg-emerald-400 hover:text-white transition duration-500 px-3 text-sm font-semibold leading-6 text-black">회원가입 하기</button>
           </div>
         </div>
       </form>
