@@ -31,67 +31,85 @@ export default function BoardMain() {
   return (
     <div>
       <Header />
-      <div className="flex items-center justify-end pr-[15.4rem] pt-6">
-        <button className="text-xl font-bold text-green-400 hover:text-emerald-500 transition duration-500">
-          <Link to={`/allBoard/BoardInput?page=${currentPage}`}>
-            게시글 작성
-          </Link>
-        </button>
-      </div>
+      <main className="flex-grow bg-gray-50">
+        <div className="w-full max-w-screen-lg mx-auto">
+          {/* 게시글 버튼영역 */}
+          <div className="flex flex-row-reverse w-full pt-8">
+            <button className="w-1/4 p-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-full transition-colors duration-500 cursor-pointer">
+              <Link
+                to={`/allBoard/BoardInput?page=${currentPage}`}
+                className="inline-block w-full h-full"
+              >
+                게시글 작성
+              </Link>
+            </button>
+          </div>
 
-      <div className="flex justify-center items-center h-screen mr-[4.6rem]">
-        <div className="flex flex-col items-center justify-center w-[64rem] shadow-md ml-[4.6rem] pr-[50rem] h-[calc(100vh-56px)]">
-          <div className="font-bold text-2xl">게시글 리스트</div>
+          <div className="w-full my-10 shadow-md bg-white">
+            <div className="w-full px-3 py-5">
+              <div className="w-full pb-2 mb-5 text-2xl border-b-2 border-gray-200">
+                <h1>게시글 리스트</h1>
+              </div>
 
-          <div className="h-full overflow-y-auto">
-            {currentPosts.length === 0 ? (
-              <p>작성된 게시글이 없습니다.</p>
-            ) : (
-              currentPosts.map((post, index) => (
-                <div
-                  key={post.id}
-                  className="border-b py-4 px-4 m-4 ml-[51rem] bg-emerald-400 w-[60rem]"
-                >
-                  <div className="text-xl text-white mb-2 font-bold">
-                    작성일: {new Date(post.createdAt).toLocaleString()}
-                  </div>
-
-                  {post.fileUrl && (
-                   <img src={post.fileUrl} alt="첨부된 파일" className="mt-2 w-32 h-32 object-cover" />
+              <div className="w-full">
+                <table className="w-full table-fixed">
+                  <tr className="w-full h-12 bg-gray-100">
+                    <th className="w-1/12">글번호</th>
+                    <th className="w-7/12">제목</th>
+                    <th className="w-1/12">첨부파일</th>
+                    <th className="w-3/12">작성일</th>
+                  </tr>
+                  {currentPosts.length === 0 ? (
+                    <tr>
+                      <td className="h-14 border-b text-center" colSpan={4}>
+                        작성된 게시글이 없습니다.
+                      </td>
+                    </tr>
+                  ) : (
+                    currentPosts.map((post, index) => (
+                      <tr key={post.id} className="h-14 border-b">
+                        <td className="text-center">{index + 1}</td>
+                        <td>
+                          <Link
+                            to={`/allBoard/BoardDetail/${currentPage}/${post.id}`} // 현재 페이지 번호와 게시글 ID 전달
+                            className="w-full"
+                          >
+                            {post.title}
+                          </Link>
+                        </td>
+                        <td className="text-center">
+                          {post.fileUrl ? <div>O</div> : <div>X</div>}
+                        </td>
+                        <td className="text-center">
+                          {new Date(post.createdAt).toLocaleString()}
+                        </td>
+                      </tr>
+                    ))
                   )}
+                </table>
+              </div>
+            </div>
+          </div>
 
-                  <Link
-                    to={`/allBoard/BoardDetail/${currentPage}/${post.id}`} // 현재 페이지 번호와 게시글 ID 전달
-                    className="font-bold text-xl"
-                  >
-                    {index + 1}번째: {post.title} {/* 번호와 제목 */}
-                  </Link>
-                  <div className="text-lg">내용: {post.content}</div>
-                </div>
-              ))
-            )}
+          {/* 페이징시작 */}
+          <div className="flex justify-center items-center">
+            <div className="flex space-x-2">
+              {/* 페이지 번호 버튼 1~5 고정 */}
+              {[...Array(5).keys()].map((pageNum) => (
+                <button
+                  key={pageNum + 1}
+                  onClick={() => handlePageChange(pageNum + 1)} // 페이지 상태 변경
+                  className={`bg-gray-50 text-gray-800 border rounded hover:text-emerald-500 transition duration-300 px-4 py-2  mb-6   ${
+                    currentPage === pageNum + 1 ? "bg-emerald-300" : ""
+                  }`}
+                >
+                  {pageNum + 1}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* 페이지 네비게이션 버튼 */}
-      <div className="flex justify-center items-center">
-        <div className="flex space-x-2">
-          {/* 페이지 번호 버튼 1~5 고정 */}
-          {[...Array(5).keys()].map((pageNum) => (
-            <button
-              key={pageNum + 1}
-              onClick={() => handlePageChange(pageNum + 1)} // 페이지 상태 변경
-              className={`bg-emerald-400 text-black px-4 py-2 rounded mb-6 hover:text-white transition duration-300 ${
-                currentPage === pageNum + 1 ? "bg-emerald-500" : ""
-              }`}
-            >
-              {pageNum + 1}
-            </button>
-          ))}
-        </div>
-      </div>
-
+      </main>
       <Footer />
     </div>
   );
