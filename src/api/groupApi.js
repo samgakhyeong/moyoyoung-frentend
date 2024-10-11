@@ -6,12 +6,20 @@ const prefix = `${API_SERVER_HOST}/api/group`;
 
 // 소모임 생성하기(파일첨부)
 export const groupRegister = async (group) => {
-  const res = await axiosInstance.post(`${prefix}/register`, group);
-  return res.data;
+  try {
+    const res = await axiosInstance.post(`${prefix}/register`, group);
+    return res.data;
+  } catch {
+    return null;
+  }
 };
 
 // 소모임 데이터 가져오기
 export const getGroupDetails = async (id) => {
-  const res = await axiosInstance.get(`${prefix}/${id}`);
-  return res.data;
+  try {
+    const res = await axiosInstance.get(`${prefix}/${id}`);
+    return res.data;
+  } catch {
+    return null;
+  }
 };
