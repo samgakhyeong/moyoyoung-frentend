@@ -5,6 +5,8 @@ import axiosInstance from '../../axiosInstance';
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import turnLeft from "../imgs/turn-left.png";
 
 export default function LoginJoin() {
   const navigate = useNavigate();
@@ -215,7 +217,14 @@ export default function LoginJoin() {
       <form onSubmit={handleSubmit}>
         <div className="flex items-center justify-center min-h-screen">
           <div className="flex flex-col items-center justify-center w-full shadow-md max-w-lg mt-20 ml-10 mb-20">
-            <h1 className="mb-8 font-bold text-4xl">회원 가입</h1>
+          <div className="flex justify-between items-center w-full">
+          <Link to="/allMemberLogin/Login">
+          <img src={turnLeft} alt="로고" className="mb-2 w-20 h-20 p-4" /> {/* 이미지 추가 */}
+        </Link>
+          <div className="flex-grow flex justify-center mr-20">
+            <h1 className="mb-2 font-bold text-4xl">회원 가입</h1>
+            </div>
+            </div>
             <p className="mb-8 font-bold">아이디 입력
               <div className="mt-2">
                 <input
@@ -311,9 +320,9 @@ export default function LoginJoin() {
                 </div>
               </p>
 
-              <button onClick={(e) => handleNameChecked(e)} disabled={nameChecked} className={`${nameChecked ? 'cursor-not-allowed bg-gray-300' : ' bg-green-200 hover:bg-green-300'} flex py-2 mt-8 ml-2 justify-center rounded-md px-3 text-sm font-semibold leading-6 text-gray-700`}>본인 인증하기</button>
+              <button onClick={(e) => handleNameChecked(e)} disabled={nameChecked} className={`${nameChecked ? 'cursor-not-allowed bg-gray-300' : ' bg-green-200 hover:bg-emerald-300 transition duration-500'} flex py-2 mt-8 ml-2 justify-center rounded-md px-3 text-sm font-semibold leading-6 text-gray-700`}>본인 인증하기</button>
             </div>
-            <button className="py-2 mb-5 rounded-md bg-green-200 hover:bg-green-300 px-3 text-sm font-semibold leading-6 text-gray-700">회원가입 하기</button>
+            <button className="py-2 mb-5 rounded-md bg-green-200 hover:bg-emerald-300 transition duration-500 px-3 text-sm font-semibold leading-6 text-gray-700">회원가입 하기</button>
           </div>
         </div>
       </form>

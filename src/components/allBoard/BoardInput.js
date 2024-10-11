@@ -3,6 +3,7 @@ import { usePostContext } from "./PostContext";
 import { useNavigate } from "react-router-dom";
 import Footer from "../common/Footer";
 import Header from "../common/Header";
+import { toast } from 'react-toastify';
 
 export default function BoardInput() {
     const { addPost } = usePostContext();
@@ -37,7 +38,9 @@ export default function BoardInput() {
         const file = fileInputRef.current.files[0]; 
     
         if (!file) {
-            alert("첨부할 파일을 선택하세요.");
+            toast.error("첨부할 파일을 선택하세요.",{
+              autoClose: 2000,
+            });
             return;
         }
     
@@ -77,7 +80,7 @@ export default function BoardInput() {
                   </label>
                   <textarea
                     id="content"
-                    className="border border-gray-300 rounded w-full p-2"
+                    className="border border-gray-300 rounded w-full p-2 resize-none"
                     rows="5"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
@@ -85,7 +88,7 @@ export default function BoardInput() {
                   />
                 </div>
                 <div className="mb-4 flex items-center">
-                  <label onClick={handleClick} className="bg-slate-400 hover:text-white hover:bg-emerald-400 transition duration-500 p-2 rounded cursor-pointer font-bold">
+                  <label onClick={handleClick} className="bg-green-300 hover:text-white hover:bg-emerald-400 transition duration-500 p-2 rounded cursor-pointer font-bold">
                     파일 첨부
                   </label>
                   <input
@@ -98,7 +101,7 @@ export default function BoardInput() {
                 </div>
                 <button
                   type="submit"
-                  className="bg-slate-400 text-black font-bold py-2 px-4 rounded hover:text-white hover:bg-emerald-400 transition duration-500"
+                  className="bg-green-300 text-black font-bold py-2 px-4 rounded hover:text-white hover:bg-emerald-400 transition duration-500"
                 >
                   게시글 작성
                 </button>

@@ -50,11 +50,13 @@ function Login() {
     return (
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 mt-12">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <Link to="/">
           <img
             alt="Your Company"
             src={LogoIcon}
             className="mx-auto h-12 w-auto"
           />
+          </Link>
         </div>
   
         {/* 아이디 라인 */}
@@ -106,9 +108,9 @@ function Login() {
             </div>
             <div>
               <button
-                type="submit"
+                type="submit" 
                 disabled={loading}
-                className="flex w-full py-2 justify-center rounded-md bg-green-300 hover:bg-green-400 px-3 text-sm font-semibold leading-6 text-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="flex w-full py-2 justify-center rounded-md bg-green-200 hover:bg-emerald-300 transition duration-500 px-3 text-sm font-semibold leading-6 text-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
               >
                 로그인
               </button>

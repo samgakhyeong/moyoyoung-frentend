@@ -32,7 +32,7 @@ export default function BoardMain() {
     <div>
       <Header />
       <div className="flex items-center justify-end pr-[15.4rem] pt-6">
-        <button className="text-xl font-bold text-slate-500 hover:text-emerald-500 transition duration-500">
+        <button className="text-xl font-bold text-green-400 hover:text-emerald-500 transition duration-500">
           <Link to={`/allBoard/BoardInput?page=${currentPage}`}>
             게시글 작성
           </Link>
@@ -82,8 +82,8 @@ export default function BoardMain() {
             <button
               key={pageNum + 1}
               onClick={() => handlePageChange(pageNum + 1)} // 페이지 상태 변경
-              className={`bg-emerald-500 text-black px-4 py-2 rounded mb-6 hover:text-white transition duration-300 ${
-                currentPage === pageNum + 1 ? "bg-emerald-600" : ""
+              className={`bg-emerald-400 text-black px-4 py-2 rounded mb-6 hover:text-white transition duration-300 ${
+                currentPage === pageNum + 1 ? "bg-emerald-500" : ""
               }`}
             >
               {pageNum + 1}
