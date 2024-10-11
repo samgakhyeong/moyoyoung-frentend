@@ -14,10 +14,11 @@ export const getGroupList = async () => {
   }
 };
 
-export const getImage = async (id) => {
+// 모임의 이미지 가져오기
+export const getImage = async (groupId) => {
   try {
     // { responseType: "blob" } => 바이너리 데이터를 blob으로 처리
-    const res = await axiosInstance.get(`${prefix}/getImage/${id}`, {
+    const res = await axiosInstance.get(`${prefix}/getImage/${groupId}`, {
       responseType: "blob",
     });
     return res.data;
