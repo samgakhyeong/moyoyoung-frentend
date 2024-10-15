@@ -129,7 +129,7 @@ export default function LoginJoin() {
 
       if (createResponse.status === 201) {
         toast.success("성공적으로 생성되었습니다!");
-        navigate('/allMemberLogin');
+        navigate('/allMemberLogin/Login');
         console.log("사용자 생성 성공:", createResponse.data);
       } else {
         toast.error(`사용자 생성 실패: ${createResponse.statusText}`);
