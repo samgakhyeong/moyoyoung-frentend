@@ -10,7 +10,7 @@ axiosInstance.interceptors.request.use(
     const state = store.getState();
     const token = state.auth.accessToken;
 
-    const excludedUrls = ["/auth/token"];
+    const excludedUrls = ["/auth/token", "/api/main/getImage/", "/api/groupUser/list", "/api/group/state/", "/api/group/detail/", "/api/main/", "/users/check/", "/users/create", "/auth/"];
     if (excludedUrls.some((url) => config.url.includes(url))) {
       return config;
     }
